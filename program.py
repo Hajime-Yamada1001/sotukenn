@@ -1,4 +1,3 @@
-%%writefile app.py
 from mip import *
 import openpyxl
 import string
