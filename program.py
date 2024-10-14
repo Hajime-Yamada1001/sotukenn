@@ -313,7 +313,7 @@ def saitekika(file):
   e = {}
   for d in D:
     for t in T:
-      e[d,t] = model.add_var(f'e{d},{t}', var_type='B')
+      e[d,t] = model.add_var(f'e{d},{t}', var_type='I')
 
   #希望出勤回数のためのペナルティ変数(最小化したい)
   h = {}
@@ -395,7 +395,7 @@ def saitekika(file):
 
 
   #目的関数の設定
-  model.objective = minimize(xsum(y[d,t] + e[d,t] for d in D for t in T)+xsum(h[i] for i in I)-xsum(syuhuten[i,d,t]*x[i,d,t] for i in I for d in D for t in T))
+  model.objective = minimize(xsum(y[d,t] + 100*e[d,t] for d in D for t in T)+xsum(h[i] for i in I)-xsum(syuhuten[i,d,t]*x[i,d,t] for i in I for d in D for t in T))
 
   #LP形式
   model.write('Shift.lp')
