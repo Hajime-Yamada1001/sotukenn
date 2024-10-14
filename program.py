@@ -350,7 +350,7 @@ def saitekika(file):
   for d in D:
         model += xsum(x[i,d,1]+x[i,d,4] for i in I if s[i] == 1) == sp[d,1] - e[d,1]
         model += xsum(x[i,d,2]+x[i,d,4]+x[i,d,5] for i in I if s[i] == 1) == sp[d,2] - e[d,2]
-        model += xsum(x[i,d,3]+x[i,d,5] for i in I if s[i] == 1) == sp[d,3] - e[d,2]
+        model += xsum(x[i,d,3]+x[i,d,5] for i in I if s[i] == 1) == sp[d,3]
 
   #1日の実働時間条件
   for i in I:
