@@ -313,7 +313,7 @@ def saitekika(file):
   e = {}
   for d in D:
     for t in T:
-      e[d,t] = model.add_var(f'e{d},{t}', var_type='I')
+      e[d,t] = model.add_var(f'e{d},{t}', var_type='B')
 
   #希望出勤回数のためのペナルティ変数(最小化したい)
   h = {}
