@@ -313,7 +313,7 @@ def saitekika(file):
   e = {}
   for d in D:
     for t in T:
-      e[d,t] = model.add_var(f'e{d},{t}', var_type='B')
+      e[d,t] = model.add_var(f'e{d},{t}', var_type='I')
 
   #希望出勤回数のためのペナルティ変数(最小化したい)
   h = {}
@@ -350,7 +350,7 @@ def saitekika(file):
   for d in D:
         model += xsum(x[i,d,1]+x[i,d,4] for i in I if s[i] == 1) == sp[d,1] - e[d,1]
         model += xsum(x[i,d,2]+x[i,d,4]+x[i,d,5] for i in I if s[i] == 1) == sp[d,2] - e[d,2]
-        model += xsum(x[i,d,3]+x[i,d,5] for i in I if s[i] == 1) == sp[d,3]
+        model += xsum(x[i,d,3]+x[i,d,5] for i in I if s[i] == 1) == sp[d,3] -e[d,3]
 
   #1日の実働時間条件
   for i in I:
@@ -395,7 +395,7 @@ def saitekika(file):
 
 
   #目的関数の設定
-  model.objective = minimize(xsum(y[d,t] + 100*e[d,t] for d in D for t in T)+xsum(h[i] for i in I)-xsum(syuhuten[i,d,t]*x[i,d,t] for i in I for d in D for t in T))
+  model.objective = minimize(xsum(y[d,t] + 10000*e[d,t] for d in D for t in T)+xsum(h[i] for i in I)-xsum(syuhuten[i,d,t]*x[i,d,t] for i in I for d in D for t in T))
 
   #LP形式
   model.write('Shift.lp')
