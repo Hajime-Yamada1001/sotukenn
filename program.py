@@ -481,6 +481,7 @@ def saitekika(file):
   else:
       print('最適解が求まりませんでした。')
 
+  return("シフト結果.xlsx")
 
 
 
