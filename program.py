@@ -65,10 +65,19 @@ def saitekika(file):
   #シフト希望読み込み
   k = {}#k={1:AB 2:CD 3:EF 4:ABCD 5:CDEF}
   syain = []
+  sinjin = []
+  sinjiniti = []
   syainkibou = {}
+  sinjinkibou = {}
   hiku = defaultdict(int)
   for i in range(len(I)):
     n = I[i]
+    if sheethope.cell(row=3+i+1 ,column=1).fill.fgColor.rgb == "FF92D050":
+        sinjin.append(n)
+        sinjiniti.append(4+i)
+        for d in D:
+          sinjinkibou[n,d]=sheethope.cell(row=3+i+1 ,column=1+d).value
+          #print(n,d,sinjinkibou[n,d])
     if sheethope.cell(row=3+i+1 ,column=1).fill.fgColor.rgb == "FF0070C0":
         syain.append(n)
         for d in D:
@@ -181,7 +190,7 @@ def saitekika(file):
   for i,row in enumerate(sheethope.iter_rows()):
       for j,cell in enumerate(row):
         value = ""
-        if not (i+1 >= 4 and i+1<=len(I) and j+1 >= 2 and j+1 <= kongetunissu+1):
+        if not (i+1 >= 4 and i+1<=len(I) and j+1 >= 2 and j+1 <= kongetunissu+1 and not i+1 in sinjiniti):
           value = cell.value
         newcell=sheetkakutei.cell(row=cell.row, column=cell.column, value=value)
         if cell.has_style:
