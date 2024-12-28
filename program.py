@@ -443,7 +443,7 @@ def saitekika(file):
   
   
   #目的関数の設定
-  model.objective = minimize(1000*xsum(y[d,t] for i in I for d in D for t in T)+0.1*xsum(h[i] for i in I if i not in syain)-xsum(syuhuten[i,d,t]*x[i,d,t] for i in I for d in D for t in T if i not in syain))
+  model.objective = minimize(1000*xsum(y[d,t] for i in I for d in D for t in T)+0.01*xsum(h[i] for i in I if i not in syain)-0.1*xsum(syuhuten[i,d,t]*x[i,d,t] for i in I for d in D for t in T if i not in syain))
   
   #LP形式
   model.write('Shift.lp')
