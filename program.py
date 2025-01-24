@@ -113,28 +113,28 @@ def saitekika(file):
         k[n,d,3] = 1
         k[n,d,4] = 1
         k[n,d,5] = 1
-      if sihutokibou == "ABCDEF4":
+      elif sihutokibou == "ABCDEF4":
         k[n,d,1] = 0
         k[n,d,2] = 0
         k[n,d,3] = 0
         k[n,d,4] = 1
         k[n,d,5] = 1
-      if sihutokibou == "ABCDEF2":
+      elif sihutokibou == "ABCDEF2":
         k[n,d,1] = 1
         k[n,d,2] = 1
         k[n,d,3] = 1
         k[n,d,4] = 0
         k[n,d,5] = 0
       elif sihutokibou == "ABCD":
-        k[n,d,1] = 0
-        k[n,d,2] = 0
+        k[n,d,1] = 1
+        k[n,d,2] = 1
         k[n,d,3] = 0
         k[n,d,4] = 1
         k[n,d,5] = 0
       elif sihutokibou == "CDEF":
         k[n,d,1] = 0
-        k[n,d,2] = 0
-        k[n,d,3] = 0
+        k[n,d,2] = 1
+        k[n,d,3] = 1
         k[n,d,4] = 0
         k[n,d,5] = 1
       elif sihutokibou == "ABCD2":
